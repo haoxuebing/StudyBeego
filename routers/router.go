@@ -29,15 +29,16 @@ func init() {
 
     //RESTful 路由
 	beego.Router("/", &controllers.MainController{})
-	beego.Router("/user",&controllers.UserController{})
+	beego.Router("/user",&controllers.StudentController{})
 
 	//注解路由
 	beego.Include(&controllers.CMSController{})
 
     //路由前置处理
     beego.InsertFilter("/",beego.BeforeRouter, func(ctx *context.Context) {
-		// fmt.Println(beego)
-		fmt.Println("this is before /")
+		str:=beego.AppConfig.String("appname")
+		fmt.Println(str)
+
 	})
 
     //自动路由 /路由名/方法名
@@ -45,5 +46,7 @@ func init() {
 
 	beego.Router("/api2/list", &controllers.TestUrlController{}, "*:List")
 	beego.Router("/person/:last/:first", &controllers.TestUrlController{})
+
+    beego.AutoRouter(&controllers.TestOrmController{})
 
 }

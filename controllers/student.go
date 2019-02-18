@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 )
 
-type UserController struct {
+type StudentController struct {
 	beego.Controller
 }
 
@@ -17,7 +17,7 @@ type Student struct {
 	Price   float32
 }
 
-func (c *UserController) Get() {
+func (c *StudentController) Get() {
 	//c.Data["Website"] = "hello world"
 	//c.Data["Email"] = "user@gmail.com"
 	//c.TplName = "index.tpl"
